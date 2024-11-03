@@ -1,0 +1,25 @@
+{
+  "branches": ["tanichev", "galaktionov", "development"],
+  "dryRun": false,
+  "ci": false,
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "releaseRules": [
+          {"type": "feature", "release": "minor"},
+          {"type": "docs", "scope": "README", "release": "patch"},
+          {"type": "refactor", "release": "patch"},
+          {"type": "fix", "release": "patch"}
+        ]
+      }
+    ],
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/gitlab",
+      {
+        "gitlabUrl": "https://gl.4dk.ru"
+      }
+    ]
+  ]
+}

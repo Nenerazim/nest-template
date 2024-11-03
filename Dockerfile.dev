@@ -1,0 +1,21 @@
+ARG NODE_VERSION
+
+###################
+# BUILD FOR LOCAL DEVELOPMENT
+###################
+
+FROM node:${NODE_VERSION}
+
+USER node
+
+WORKDIR /usr/src/app
+
+COPY --chown=node:node package*.json ./
+
+COPY --chown=node:node .npmrc ./
+
+
+RUN npm i
+
+COPY --chown=node:node . .
+USER node

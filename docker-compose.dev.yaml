@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - '${REDIS_PORT}:6379'
+    env_file:
+      - .env
+  mysql_db:
+    image: mysql:latest
+    ports:
+    - '${MYSQL_PORT}:3310'
+    env_file:
+      - .env
