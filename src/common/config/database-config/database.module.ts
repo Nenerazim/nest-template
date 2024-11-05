@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from 'src/app/model';
+import { FormModel, SomeListModel, User } from 'src/app/model';
+import { PageTitleModel } from 'src/app/model/PageTitleModel';
 
 @Module({
   imports: [
@@ -11,7 +12,7 @@ import { User } from 'src/app/model';
       username: process.env.MYSQL_USER,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      entities: [User],
+      entities: [User, SomeListModel, PageTitleModel, FormModel],
       synchronize: true
     })
   ]

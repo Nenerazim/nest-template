@@ -1,5 +1,6 @@
-import { applyDecorators, Delete, Get, HttpCode, HttpStatus, Patch, Post, Put } from '@nestjs/common';
+import { applyDecorators, Delete, Get, HttpCode, HttpStatus, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { AuthGuard } from 'src/core/components/AuthGuard';
 
 export function DefaultExceptions() {
   return applyDecorators(
@@ -89,4 +90,8 @@ export function DefaultPutAction(data: DefaultActionData) {
     OkResponse(),
     DefaultExceptions()
   );
+}
+
+export function RouteGuard() {
+  return applyDecorators(UseGuards(AuthGuard));
 }

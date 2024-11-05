@@ -1,12 +1,14 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { UserEntity } from 'src/app/dto/user-dto';
+import { FormEntity } from 'src/app/dto/formDto';
 
 @Entity()
-export class User implements UserEntity {
+export class FormModel implements FormEntity {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
   name: string;
   @Column()
-  password: string;
+  email: string;
+  @Column()
+  massage: string;
 }

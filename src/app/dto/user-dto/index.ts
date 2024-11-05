@@ -1,1 +1,2 @@
-export * from './UserEntity';
+export * from './Entity';
+export * from './Request';

@@ -7,6 +7,7 @@ export class ResponseBuilder<T = unknown, D = unknown> {
     message?: string;
     status: number;
     total?: number;
+    page?: number;
     data?: T;
     errors?: D;
   };
@@ -55,6 +56,12 @@ export class ResponseBuilder<T = unknown, D = unknown> {
     return this;
   }
 
+  public setPagination(page: number, total: number) {
+    this.dataDto.page = page;
+    this.dataDto.total = total;
+    return this;
+  }
+
   public setErrors(errors: D) {
     this.dataDto.errors = errors;
     return this;
@@ -69,10 +76,9 @@ export class ResponseBuilder<T = unknown, D = unknown> {
     if (Object.keys(cookies).length) {
       for (const cookie in cookies) {
         response.setCookie(cookie, cookies[cookie], {
-          httpOnly: true,
+          httpOnly: false,
           path: '/',
-          sameSite: 'lax',
-          domain: '.4dk.ru'
+          sameSite: 'lax'
         });
       }
     }

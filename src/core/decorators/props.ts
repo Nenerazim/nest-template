@@ -174,8 +174,8 @@ export function EmailProps(props?: DefaultDecoratorProps) {
   const isRequired = props?.required ?? false;
   return applyDecorators(
     ApiProperty({
-      name: 'email',
-      example: 'name',
+      name: 'password',
+      example: 'password',
       required: isRequired
     }),
     !isRequired ? IsOptional() : IsNotEmpty()
