@@ -1,4 +1,4 @@
-import { ControllerDesc, CreatePageTitle, DeletePageTitle, GetAllPageTitle, GetPageTitle, UpdatePageTitle } from './Decorators';
+import { ControllerDesc, CreatePageTitle, GetAllPageTitle, GetPageTitle, UpdatePageTitle } from './Decorators';
 import { Body, HttpStatus, Inject, Param, Query } from '@nestjs/common';
 import { PageTitleCase } from 'src/app/use-cases';
 import { ResponseBuilder } from 'src/core/components/ResponseBuilder';
@@ -22,11 +22,6 @@ export class PageTitleController {
   @GetPageTitle()
   async getSomeList(@Param('name') name: string) {
     return this.pageTitleCase.findOne(name).then((response) => ResponseBuilder.success().setData(response).build());
-  }
-
-  @DeletePageTitle()
-  async deleteSomeList(@Param('name') name: string) {
-    return this.pageTitleCase.delete(name).then(() => ResponseBuilder.success(HttpStatus.NO_CONTENT).build());
   }
 
   @CreatePageTitle()
